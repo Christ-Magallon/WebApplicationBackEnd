@@ -11,5 +11,4 @@ public class AddProductDto
     public decimal price { get; set; }
     public byte[]? image { get; set; }
     public required string category { get; set; }
-    public int? PurchaseCount { get; set; }
 }

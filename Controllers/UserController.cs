@@ -37,6 +37,21 @@ namespace WebApplicationBackEnd.Controllers
         }
 
         [HttpPost]
+        [Route("/api/Login")]
+        public IActionResult UserLogin(LoginDto loginDto)
+        {
+          var user = dbContext.Users
+        .FirstOrDefault(logincred => logincred.Username == loginDto.Username && logincred.Password == loginDto.Password && logincred.Type == loginDto.Type);
+
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(user);
+        }
+
+        [HttpPost]
         public IActionResult AddUser(AddUserDto addUserDto)
         {
             var userEntity = new User()

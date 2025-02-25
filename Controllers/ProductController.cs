@@ -48,7 +48,6 @@ namespace WebApplicationBackEnd.Controllers
                 price = addProductDto.price,
                 image = addProductDto.image,
                 category = addProductDto.category,
-                PurchaseCount = addProductDto.PurchaseCount
             };
 
             dbContext.Products.Add(productEntity);
