@@ -78,7 +78,7 @@ namespace WebApplicationBackEnd.Controllers
             return Ok(product);
         }
 
-          [HttpPut]
+        [HttpPut]
         [Route("UpdateQuantity/{id:guid}")]
         public IActionResult UpdateProductQuantity(Guid id)
         {
@@ -88,7 +88,17 @@ namespace WebApplicationBackEnd.Controllers
             {
                 return NotFound();
             }
-            product.quantity = product.quantity - 1;
+            product.quantity -= 1;
+            
+            if (product.PurchaseCount == null || product.PurchaseCount == 0)
+            {
+                product.PurchaseCount = 1;
+            }
+            else
+            {
+                product.PurchaseCount += 1;
+            }
+          
          
             dbContext.SaveChanges();
 

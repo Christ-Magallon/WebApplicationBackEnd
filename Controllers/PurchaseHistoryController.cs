@@ -23,6 +23,20 @@ namespace WebApplicationBackEnd.Controllers
         }
 
         [HttpGet]
+        [Route("user/{userId}")]
+        public IActionResult GetPurchaseHistoryByUserId(string userId)
+        {
+            var purchasehistory = dbContext.PurchaseHistories.Where(p => p.UserId == userId).ToList();
+
+            if (purchasehistory == null || purchasehistory.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(purchasehistory);
+        }
+
+        [HttpGet]
         [Route("{id:guid}")]
         public IActionResult GetPurchaseHistoryById(Guid id)
         {
