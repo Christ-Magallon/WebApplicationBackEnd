@@ -9,6 +9,6 @@ public class AddProductDto
     public required int quantity { get; set; }
     public string? description { get; set; }
     public decimal price { get; set; }
-    public byte[]? image { get; set; }
+    public string? image { get; set; }
     public required string category { get; set; }
 }

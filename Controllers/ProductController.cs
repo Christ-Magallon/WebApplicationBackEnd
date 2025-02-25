@@ -72,9 +72,6 @@ namespace WebApplicationBackEnd.Controllers
             product.quantity = updateProductDto.quantity;
             product.description = updateProductDto.description;
             product.price = updateProductDto.price;
-            product.image = updateProductDto.image;
-            product.category = updateProductDto.category;
-            product.PurchaseCount = updateProductDto.PurchaseCount;
 
             dbContext.SaveChanges();
 
