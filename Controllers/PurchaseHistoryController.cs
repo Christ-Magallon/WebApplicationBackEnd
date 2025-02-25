@@ -43,8 +43,8 @@ namespace WebApplicationBackEnd.Controllers
             {
                 ProductId = addPurchaseHistoryDto.ProductId,
                 UserId = addPurchaseHistoryDto.UserId,
-                PurchaseDate = addPurchaseHistoryDto.PurchaseDate,
                 Quantity = addPurchaseHistoryDto.Quantity,
+                PurchaseDate = DateTime.UtcNow,
                 UserName = addPurchaseHistoryDto.UserName,
                 ProductName = addPurchaseHistoryDto.ProductName
             };

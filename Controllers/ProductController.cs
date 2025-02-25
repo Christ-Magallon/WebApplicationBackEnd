@@ -58,8 +58,8 @@ namespace WebApplicationBackEnd.Controllers
         }
 
         [HttpPut]
-        [Route("{id:guid}")]
-        public IActionResult UpdateEmployee(Guid id, UpdateProductDto updateProductDto)
+        [Route("UpdateProduct/{id:guid}")]
+        public IActionResult UpdateProduct(Guid id, UpdateProductDto updateProductDto)
         {
             var product = dbContext.Products.Find(id);
 
@@ -78,9 +78,26 @@ namespace WebApplicationBackEnd.Controllers
             return Ok(product);
         }
 
+          [HttpPut]
+        [Route("UpdateQuantity/{id:guid}")]
+        public IActionResult UpdateProductQuantity(Guid id)
+        {
+            var product = dbContext.Products.Find(id);
+
+            if(product == null)
+            {
+                return NotFound();
+            }
+            product.quantity = product.quantity - 1;
+         
+            dbContext.SaveChanges();
+
+            return Ok(product);
+        }
+
         [HttpDelete]
         [Route("{id:guid}")]
-        public IActionResult DeleteEmployee(Guid id)
+        public IActionResult DeleteProduct(Guid id)
         {
             var product = dbContext.Products.Find(id);
 
