@@ -37,6 +37,26 @@ namespace WebApplicationBackEnd.Controllers
         }
 
         [HttpPost]
+        [Route("getbyids")]
+        public IActionResult GetProductsByIds([FromBody] List<Guid> productIds)
+        {
+            if (productIds == null || !productIds.Any())
+            {
+                return BadRequest("Product IDs are required.");
+            }
+
+            var products = dbContext.Products.Where(p => productIds.Contains(p.id)).ToList();
+
+            if (!products.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(products);
+        }
+
+
+        [HttpPost]
         public IActionResult AddProduct(AddProductDto addProductDto)
         {
             var productEntity = new Product()
